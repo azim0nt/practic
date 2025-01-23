@@ -16,3 +16,12 @@ Write three reasons why professional programmers prefer to use an IDE like VSCod
 
 
 2# Version Control with Git
+
+Is Version Control necessary in order to program? If not, why do it? (Нужен ли контроль версий для программирования? Если нет, то зачем он нужен?)
+
+Да нужно, с помощью контроля версия можно легко перемещаться по версиям, Например: Ваш код работал, но после нововедений он перестал работать, вы можете перемещаться по версия и посмотреть после чего он перестал работать
+
+Create a new GitHub repository for your projects and familiarize yourself with GitHub features like Issues, Pull Requests, and Actions
+
+https://github.com/azim0nt
+
