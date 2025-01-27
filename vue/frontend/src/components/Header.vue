@@ -1,11 +1,15 @@
+<script setup>
+import {RouterLink} from 'vue-router'
+</script>
+
 <template>
     <div class="header-wrapper">
         <nav>
             <div class="left">
-                <a href="#">GASLUR</a>
+                <RouterLink to="/">GASLUR</RouterLink>
             </div>
             <div class="middle">
-                <a href="#">HOME</a>
+                <RouterLink to="/test-router">HOME</RouterLink>
                 <a href="#">MY PROFILE</a>
                 <a href="#">ACTIVITY</a>
                 <a href="#">HOW IT WORKS</a>
