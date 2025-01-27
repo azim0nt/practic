@@ -13,6 +13,6 @@ import Header from './components/Header.vue';
 
 .app-wrapper{
     background-color: $bg-color;
-
+    padding: 0  50px;
 }   
 </style>
