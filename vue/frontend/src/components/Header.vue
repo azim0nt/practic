@@ -27,16 +27,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@use '../assets/styles/settings.scss' as *;
+// @use '../assets/styles/settings.scss' as *;
 
 .header-wrapper {
+    height: 100px;
     nav {
         @include flex(row, space-between, center);
         padding: 10px 0;
         .left {
             a {
                 @extend %text-gradient;
-                font-size: 32px;
+                font-size: 32px;  
                 font-weight: 700;
             }
         }

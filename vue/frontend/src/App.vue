@@ -11,10 +11,13 @@ import { RouterView } from 'vue-router';
 </template>
 
 <style lang="scss">
-@use './assets/styles/settings.scss' as *;
+// @use './assets/styles/settings.scss' as *;
 
 .app-wrapper{
     background-color: $bg-color;
     padding: 0  50px;
 }   
+
+
 </style>
+   
