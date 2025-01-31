@@ -1,5 +1,5 @@
 <script setup>
-import {RouterLink} from 'vue-router'
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
@@ -27,17 +27,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-// @use '../assets/styles/settings.scss' as *;
-
 .header-wrapper {
     height: 100px;
+
     nav {
         @include flex(row, space-between, center);
         padding: 10px 0;
+
         .left {
             a {
                 @extend %text-gradient;
-                font-size: 32px;  
+                font-size: 32px;
                 font-weight: 700;
             }
         }
@@ -54,20 +54,22 @@ export default {
                 &::after {
                     content: '';
                     position: absolute;
-                    bottom: -4px; 
+                    bottom: -4px;
                     left: 0;
                     width: 0;
-                    height: 2px; 
+                    height: 2px;
                     background: $violet;
-                    transition: width 0.3s ease; 
+                    transition: width 0.3s ease;
                     border-radius: 2px;
                 }
 
-                &:hover::after,&.router-link-active::after {
-                    width: 100%; 
+                &:hover::after,
+                &.router-link-active::after {
+                    width: 100%;
                 }
 
-                &:hover,&.router-link-active {
+                &:hover,
+                &.router-link-active {
                     @extend %text-gradient;
                     font-weight: 700;
                 }
