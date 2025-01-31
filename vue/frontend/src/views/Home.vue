@@ -2,6 +2,7 @@
 import nft_1 from '@/assets/images/nft_1.png'
 import avatar from '@/assets/images/avatar.png'
 import { CiHeart } from '@kalimahapps/vue-icons';
+import HotAuctions from './HotAuctions.vue';
 </script>
 
 <template>
@@ -35,7 +36,7 @@ import { CiHeart } from '@kalimahapps/vue-icons';
                     <div class="card-info">
                         <p>WE ARE HERE</p>
                         <p>
-                            <CiHeart  class="heart" /> 25
+                            <CiHeart class="heart" /> 25
                         </p>
                     </div>
                 </div>
@@ -44,6 +45,7 @@ import { CiHeart } from '@kalimahapps/vue-icons';
             </div>
         </div>
     </div>
+    <HotAuctions />
 </template>
 <script>
 export default {
@@ -54,13 +56,17 @@ export default {
 .home-wrapper {
     @include flex(row, space-between, center);
     width: 100%;
-    height: 89vh;
-
+    height: 100%;
+    max-height: 800px;
+    margin-bottom: 150px;
     .left {
-        width: 50%;;
+        width: 50%;
+        ;
+
         .text {
             p {
                 margin-bottom: 30px;
+
                 &.title {
                     font-size: 72px;
                     font-weight: 600;
@@ -110,24 +116,29 @@ export default {
                 @include flex(row, space-between, center);
                 position: relative;
                 z-index: 3;
-                .owner{
+
+                .owner {
                     display: flex;
-                    .owner-info{
-                        p{
-                            &:first-child{
+
+                    .owner-info {
+                        p {
+                            &:first-child {
                                 font-weight: 600;
                             }
                         }
                     }
                 }
-                .card-info{
-                    p{
-                        &:first-child{
+
+                .card-info {
+                    p {
+                        &:first-child {
                             font-weight: 600;
                         }
-                        &:last-child{
-                            @include flex(row,right,center,5px);
-                            svg{
+
+                        &:last-child {
+                            @include flex(row, right, center, 5px);
+
+                            svg {
                                 font-size: 20px;
                             }
                         }
