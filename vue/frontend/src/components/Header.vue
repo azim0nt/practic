@@ -63,11 +63,11 @@ export default {
                     border-radius: 2px;
                 }
 
-                &:hover::after {
+                &:hover::after,&.router-link-active::after {
                     width: 100%; 
                 }
 
-                &:hover {
+                &:hover,&.router-link-active {
                     @extend %text-gradient;
                     font-weight: 700;
                 }

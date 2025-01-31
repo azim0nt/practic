@@ -5,9 +5,11 @@
 $gradient: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
 $bg-color: #1F1D2B;
 $violet: #9B51E0;
+$purple:#FB37FF;
+$blue:#18B2DE;
 $gray: #BCBCBC;
 $light-gray:#D7D7D7;
-
+$text-color:#E2E2E2;
 
 * {
     padding: 0;
@@ -17,7 +19,9 @@ $light-gray:#D7D7D7;
     transition: 0.3s;
     color: #fff;
 }
-
+body{
+    overflow-x: hidden;
+}
 a {
     text-decoration: none;
 }

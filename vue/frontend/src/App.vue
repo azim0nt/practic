@@ -15,7 +15,7 @@ import { RouterView } from 'vue-router';
 
 .app-wrapper{
     background-color: $bg-color;
-    padding: 0  50px;
+    padding: 0  100px;
 }   
 
 
