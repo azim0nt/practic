@@ -3,6 +3,7 @@ import nft_1 from '@/assets/images/nft_1.png'
 import avatar from '@/assets/images/avatar.png'
 import { CiHeart } from '@kalimahapps/vue-icons';
 import HotAuctions from './HotAuctions.vue';
+import GettingStarted from './GettingStarted.vue';
 </script>
 
 <template>
@@ -46,6 +47,7 @@ import HotAuctions from './HotAuctions.vue';
         </div>
     </div>
     <HotAuctions />
+    <GettingStarted/>
 </template>
 <script>
 export default {
