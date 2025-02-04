@@ -1,4 +1,4 @@
-![Django banner](django/banner.png "Django")
+![Django banner](images/banner.png "Django")
 # Django документация
 
 ## Django - это python фреймворк, для создания бэкенда. В Django легко стартовать потому что тут всё что нужно создаётся в два клика, и не надо изобретать велосипед
@@ -25,7 +25,7 @@
 >```bash
 >source venv/bin/activate
 >```
-> ![Image](django/image.png "Image")\
+> ![Image](images/screenshot_2.png "Image")\
 >
 > После этого у вас возле текущей директории появиться имя вашего вертульного пространства. Это значит что у вас активировалось вернуальное пространство.
 > Теперь можно приступить 
