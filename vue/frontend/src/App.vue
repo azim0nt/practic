@@ -1,6 +1,11 @@
 <script setup>
-import Header from './components/Header.vue'
 import { RouterView } from 'vue-router';
+
+
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue';
+
+
 </script>
 
 <template>
@@ -8,6 +13,7 @@ import { RouterView } from 'vue-router';
     <div class="app-wrapper">
         <Header/>
         <RouterView/>
+        <Footer/>
     </div>
 </div>
 </template>
