@@ -1,4 +1,4 @@
-![Django banner](/banner.png "Django")
+![Django banner](django/banner.png "Django")
 # Django документация
 
 ## Django - это python фреймворк, для создания бэкенда. В Django легко стартовать потому что тут всё что нужно создаётся в два клика, и не надо изобретать велосипед
