@@ -63,9 +63,9 @@ button{
     background-clip: text;
 }
 
-@mixin grid($columns: 12, $gap: 20px) {
+@mixin grid($columns: 12, $gap: 20px,$size:1fr) {
     display: grid;
-    grid-template-columns: repeat($columns, 1fr);
+    grid-template-columns: repeat($columns, $size);
     grid-gap: $gap;
 }
 
