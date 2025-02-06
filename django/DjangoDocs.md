@@ -21,11 +21,34 @@
 >```bash
 >venv/Scripts/activate
 >```
-> **Mac/Linux** - "**source venv/bin/activate**". \
+> **Mac/Linux** - "**source venv/bin/activate**". 
 >```bash
 >source venv/bin/activate
 >```
-> ![Image](../images/screenshot_2.png "Image")\
+> ![Image](../images/screenshot_2.png "Image")
 >
-> После этого у вас возле текущей директории появиться имя вашего вертульного пространства. Это значит что у вас активировалось вернуальное пространство.
-> Теперь можно приступить 
+> После этого у вас возле текущей директории появиться имя вашего вертульного пространства. > Это значит что у вас активировалось вернуальное пространство.
+> Теперь можно приступить к установке Django, делается это командой "**pip install Django**".
+>```bash
+>pip install Django
+>```
+>
+> Дальше нужно создать проект Django, это делается командой "**django-admin startproject название_проекта**".
+> ``` bash 
+> django-admin startproject app
+> ```
+> У вас создаться папка с проектом: 
+>
+> ![Image](../images/screenshot_3.png "Image")\
+> Это был этап установки Django.
+
+## Запуск и настройка
+
+> После установки нужно запустить Django.
+>```bash
+>cd app
+>python manage.py runserver
+>```
+> Дальше вам нужно сделать миграцию
+>``` bash
+> python manage.py migrate
