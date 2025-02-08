@@ -197,9 +197,141 @@
 > > Можно написать:
 > >
 > > ```html
-> >  <a href="{% url "home" %}">Home</a>
+> >  <a href="{% url 'home' %}">Home</a>
 > > ```
 
 ## Создание простого приложения Django:
 
-> Теперь для примера создадим приложение. Это будет с список работников, и функции их добавление в список
+> Теперь для примера создадим приложение. Это будет с список работников, и функции их добавление в список.
+>
+> Чтоб нам создать приложение нам нужно вести следующюю команду:
+> ``` bash
+> python manage.py startapp название_приложения
+> ```
+> После этого у вас в директория появится папка с названием вашего приложения.
+>
+>![Image](../images/screenshot_8.png "Image")
+>
+> Далее нам необходимо создать модель сотрудника, которая будет содержать такие данные, как имя, роль.
+> Заходим в файл **employees/models.py**.
+>``` python
+>from django.db import models
+>
+>
+>class Employees(models.Model):
+>    ROLE_CHOICES = [
+>        ('Backend', 'Backend'),
+>        ('Frontend', 'Frontend'),
+>        ('Fullstack', 'Fullstack'),
+>        ('DevOps', 'DevOps'),
+>        ('MobileDev', 'MobileDev'),
+>    ]
+>    
+>    name = models.CharField(max_length=50)
+>    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+>
+>    class Meta:
+>        verbose_name = 'employee'
+>        verbose_name_plural = 'employees'
+>        
+>    def __str__(self):
+>        return self.name
+>```
+> Тут мы создаём модель **Employees** которая будет показываться как таблица в базе данных, а в таблице также находятся данные такие как **name** и **role**, **name** указываем как models.CharField (текстовое поле) с максимальной длинной 50 символов, а **role** тоже текстовое поле но с ограничением, то есть мы можете вписать туда информацию только из **ROLE_CHOICES**.
+> Класс Meta и функция `__str__` служат для отображение в базе данных. В **Meta** `verbose_name = 'employee'` — задаёт читаемое название модели в единственном числе, а `verbose_name_plural = 'employees'` в множественном.
+>
+> Дальше нам нужно добавить в настройках наше приложение чтоб Джанго мог его видеть, идём в **settings.py** и ищем лист `INSTALLED_APPS` и добавляем туда название нашего приложения
+>``` python
+> INSTALLED_APPS = [
+>    'django.contrib.admin',
+>    'django.contrib.auth',
+>    'django.contrib.contenttypes',
+>    'django.contrib.sessions',
+>    'django.contrib.messages',
+>    'django.contrib.staticfiles',
+>    'employees'
+>]
+>```
+> Дальше делаем миграцию чтоб Джанго создал в базе данных таблицу с нашей моделью
+>``` bash
+>python manage.py makemigrations
+>python manage.py migrate
+>```
+>![Image](../images/screenshot_9.png "Image")
+> Мы добавили в базу данных, но пока что не видно в админ-панели, нужно зайти в **employees/admin.py** и написать:
+>``` python
+>from django.contrib import admin
+>from django.apps import apps
+>
+>app = apps.get_app_config('employees')
+>
+>for model_name, model in app.models.items():
+>    admin.site.register(model)
+>```
+>![Image](../images/screenshot_10.png "Image")
+>
+> Всё модель появилась теперь можем добавить туда данные.
+> Чтоб показать данные нам нужно создать страницу, создаём папку **templates** внутри **employees**, также создаём **employees.html**.
+>``` html
+>{% extends 'base.html' %}
+>
+>{% block title %}
+>  <title>Employees</title>
+>{% endblock %}
+>
+>{% block styles %}
+>{% endblock %}
+>
+>{% block content %}
+>{% endblock %}
+>``` 
+> Теперь создаю view для страницы:
+>``` python
+> from django.shortcuts import render
+> 
+> 
+> 
+> def employees(request):
+>     
+>     return render(request,'employees.html')
+> 
+>```
+> И создаём роутинг для станицы, для этого нужно создать файл **urls.py** внутри **employees**:
+>``` python
+>from django.urls import path
+>from .views import employees
+>
+>urlpatterns = [
+>    path('', employees, name='employees')
+>]
+>
+>``` 
+>Чтоб наш роут был виден в Джанго, его нужно найти в главном urls.py:
+>``` python
+>from django.contrib import admin
+>from django.urls import path,include
+>from .views import home
+>
+>
+>urlpatterns = [
+>    path('admin/', admin.site.urls),
+>    path('', home, name='home'),
+>    path('employees/', include('employees.urls'))
+>]
+>```
+> Тут мы говорим с приложения **employees** найди все пути.
+>
+>![Image](../images/screenshot_11.png "Image")
+>
+> Всё страница отображается, теперь надо показать данные с модели:
+>``` python
+>from django.shortcuts import render
+>from .models import Employees
+>
+>
+>def employees(request):
+>    employees_data = Employees.objects.all()
+>
+>    return render(request,'employees.html', context={'employees':employees_data})
+>```
+>Теперь заходим в **employees.html** 
