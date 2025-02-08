@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
   <title>Employees</title>
 {% endblock %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'styles/employees.css' %}"> 
 {% endblock %}
 
 {% block content %}
 <div class="employees-wrapper">
     <h1>Employees</h1>
+    <div><a href="{% url "home" %}">Home</a><br><a href="{% url "add_employee" %}">Добавить сотрудника</a></div>
     <div class="employees-content">
         <div>
             <p class="name">Name</p>

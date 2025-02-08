@@ -1,0 +1,10 @@
+.employees-wrapper .employees-content {
+  margin-left: 50px;
+}
+.employees-wrapper .employees-content div {
+  display: flex;
+}
+.employees-wrapper .employees-content div p {
+  width: 200px;
+  text-align: left;
+}/*# sourceMappingURL=employees.css.map */

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+<Title>Add new employee</Title>
+{% endblock title %}
+
+{% block styles %}{% endblock styles %}
+
+
+{% block content %}
+<div class="new-employee-wrapper">
+    <h1>Add new employee</h1>
+    <div><a href="{% url "home" %}">Home</a><br><a href="{% url "employees" %}">Сотрудники</a></div>
+
+    <div class="new-employee-content">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

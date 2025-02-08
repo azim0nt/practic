@@ -334,4 +334,108 @@
 >
 >    return render(request,'employees.html', context={'employees':employees_data})
 >```
->Теперь заходим в **employees.html** 
+>Теперь заходим в **employees.html**:
+>``` html
+>{% extends 'base.html' %}
+>{% load static %}
+>{% block title %}
+>  <title>Employees</title>
+>{% endblock %}
+>
+>{% block styles %}
+><link rel="stylesheet" href="{% static 'styles/employees.css' %}"> 
+>{% endblock %}
+>
+>{% block content %}
+><div class="employees-wrapper">
+>    <h1>Employees</h1>
+>    <div class="employees-content">
+>        <div>
+>            <p class="name">Name</p>
+>            <p class="role">Role</p>
+>        </div>
+>        {% for employee in employees %}
+>        <div class="employee">
+>            <p class="name">{{employee.name}}</p>
+>            <p class="role">{{employee.role}}</p>
+>        </div>
+>        {% endfor %}
+>    </div>
+></div>
+>{% endblock %}
+>``` 
+> С помощью цикла достаём всех сотрудников и показываем.
+>
+>![Image](../images/screenshot_12.png "Image")
+>
+> Теперь добавим возможноть добавлять новых сотрудников, создаём файл **new_employee.html** внутри **employees/templates**. Создаём файл **forms.py** где будет хранится формы приложения.
+>``` python
+>from django import forms
+>from .models import Employees
+>
+>
+>class EmployeesForm(forms.ModelForm):
+>    class Meta:
+>        model = Employees
+>        fields = ['name', 'role']
+>```
+> Тут мы создаём форму для нашей модель, в метаданных указываем для какой модели создавать форму, и какие поля брать для заполнения. Теперь переходим в **views.py** и создаём страницу для добавления нового сотрудника:
+>``` python
+>def new_employee(request):
+>    if request.method == 'POST':
+>        form = EmployeesForm(request.POST)
+>        if form.is_valid():
+>            employee = form.save(commit=False)
+>            employee.save()
+>            return redirect('employees')
+>    else:
+>        form = EmployeesForm()
+>    return render(request, 'new_employee.html', context={'form':form})
+>```
+> Тут мы говорим если в request пост запрос, получаем с него данные сохраняем и отправляем на страницу с сотрудниками, если request не пост запрос, то просто отправляем форму. 
+>``` html
+> {% extends "base.html" %}
+> 
+> {% block title %}
+> <Title>Add new employee</Title>
+> {% endblock title %}
+> 
+> {% block styles %}{% endblock styles %}
+> 
+> 
+> {% block content %}
+> <div class="new-employee-wrapper">
+>     <h1>Add new employee</h1>
+>     <div class="new-employee-content">
+>         <form method="post" enctype="multipart/form-data">
+>             {% csrf_token %}
+>             {{form.as_p}}
+>             <button type="submit">Submit</button>
+>         </form>
+>     </div>
+> </div>
+> {% endblock content %}
+>```
+> Тут мы создаём форму с методом пост, внутри формы мы передаём **csfr-токен** чтоб сервер принимал наши пост запросы, вставляем готовую форму от джанго, и кнопка **submit**.
+>
+> Также не забудьте добавить роутинг для страницы в **urls.py**:
+>``` python
+> path('/add-employee', new_employee, name='add_employee')
+>```
+> 
+>Принцепи у нас всё готово осталось оставить ссылки на страницы чтоб можно было удобно перемещаться.
+
+>Вот как выглядят все страницы
+>> **Home**:
+>>
+>>![Image](../images/screenshot_13.png "Image")
+>>
+>> **Employees**:
+>>
+>>![Image](../images/screenshot_14.png "Image")
+>>
+>> **Add new employee**:
+>>
+>>![Image](../images/screenshot_15.png "Image")
+>>
+
