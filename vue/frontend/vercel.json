@@ -1,9 +1,15 @@
 {
-    "rewrites": [
-      {
-        "source": "/test-router",
-        "destination": "/test-router"
-      }
-    ]
-  }
-  
+  "redirects": [
+    {
+      "source": "/old-page",
+      "destination": "/new-page",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/page/:slug",
+      "destination": "/new-page/:slug"
+    }
+  ]
+}
