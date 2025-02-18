@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/test-router",
+        "destination": "/test-router"
+      }
+    ]
+  }
+  
