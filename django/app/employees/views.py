@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Employees
 from .forms import EmployeesForm
+
+
+
 def employees(request):
     employees_data = Employees.objects.all()
 
