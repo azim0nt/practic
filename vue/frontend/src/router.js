@@ -20,6 +20,6 @@ const routes = [
     }
 ]
 
-const router = createRouter({history:createWebHistory('https://www.azimont.uz/'),routes})
+const router = createRouter({history:createWebHistory(),routes})
 
 export default router;
